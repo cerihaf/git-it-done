@@ -36,7 +36,6 @@ var getUserRepos = function(user) {
     } else {
     alert("Please enter a GitHub username");
     }
-    console.log(event);
   };
 
   var displayRepos = function(repos, searchTerm) {
@@ -53,8 +52,9 @@ var getUserRepos = function(user) {
         var repoName = repos[i].owner.login + "/" + repos[i].name;
     
         // create a container for each repo
-        var repoEl = document.createElement("div");
+        var repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
     
         // create a span element to hold repository name
         var titleEl = document.createElement("span");
@@ -82,7 +82,5 @@ var getUserRepos = function(user) {
         repoContainerEl.appendChild(repoEl);
     }
   };
-
-console.log("outside");
   
 userFormEl.addEventListener("submit", formSubmitHandler);
